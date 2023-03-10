@@ -2,10 +2,10 @@
 
 import "package:flutter/material.dart";
 import "package:google_nav_bar/google_nav_bar.dart";
-import 'HomePage.dart';
-import "SecondScreen.dart";
-import "ThirdScreen.dart";
-import "Settings.dart";
+import 'package:helloworld/screens/SecondScreen.dart';
+import 'screens/HomePage.dart';
+import 'screens/ThirdScreen.dart';
+import 'screens/Settings.dart';
 
 void main() {
   runApp(
@@ -34,11 +34,11 @@ class MyAppState extends State<MyApp> {
         // ignore: prefer_const_literals_to_create_immutables
         children: [
           Container(
-              height: 0.9 * MediaQuery.of(context).size.height,
+              height: 0.915 * MediaQuery.of(context).size.height,
               child: screenArr[screenIndx]),
           Container(
               width: MediaQuery.of(context).size.width,
-              height: 0.1 * MediaQuery.of(context).size.height,
+              height: 0.085 * MediaQuery.of(context).size.height,
               child: Align(
                 alignment: Alignment.topCenter,
                 child: GNav(

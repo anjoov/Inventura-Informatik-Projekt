@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import "package:flutter/material.dart";
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,14 +13,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:Scaffold(
-        body: Container(
+        home: Scaffold(
+            body: Column(
+      children: [
+        Container(
+          color: Colors.amber,
+          height: 0.915*0.915 * MediaQuery.of(context).size.height
+
+        ),
+        Container(
           color: Colors.black,
-        )
+          height: 0.085*0.915 * MediaQuery.of(context).size.height
 
-
-      )
-    );
+        ),
+      ],
+    )));
   }
 }
-
