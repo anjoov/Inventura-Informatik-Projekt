@@ -2,7 +2,9 @@
 
 import "package:flutter/material.dart";
 import "package:google_nav_bar/google_nav_bar.dart";
-import 'package:helloworld/screens/SecondScreen.dart';
+import 'package:provider/provider.dart';
+import 'data/inventar_data.dart';
+import 'screens/SecondScreen.dart';
 import 'screens/HomePage.dart';
 import 'screens/ThirdScreen.dart';
 import 'screens/Settings.dart';
@@ -14,6 +16,9 @@ void main() {
     ),
   );
 }
+int screenIndx = 0;
+var screenArr = [HomePage(), SecondScreen(), ThirdScreen(), Settings()];
+
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -22,21 +27,20 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => MyAppState();
 }
 
-int screenIndx = 1;
-var screenArr = [HomePage(), SecondScreen(), ThirdScreen(), Settings()];
-
 class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
+    return ChangeNotifierProvider(
+      create: (context) => InventarData(),
+      builder: (context, child) => Scaffold(
+          resizeToAvoidBottomInset: false,
       body: Column(
-        // ignore: prefer_const_literals_to_create_immutables
         children: [
-          Container(
+            Container(
               height: 0.915 * MediaQuery.of(context).size.height,
-              child: screenArr[screenIndx]),
-          Container(
+              child: screenArr[screenIndx],
+              ),
+            Container(
               width: MediaQuery.of(context).size.width,
               height: 0.085 * MediaQuery.of(context).size.height,
               child: Align(
@@ -66,8 +70,15 @@ class MyAppState extends State<MyApp> {
                   ],
                 ),
               )),
+
+
+
+
         ],
+        ),
       ),
-    ));
+    );
   }
 }
+
+
