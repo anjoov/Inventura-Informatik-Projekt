@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 class InventarItem {
   final String name;
   final String price;
@@ -6,7 +8,6 @@ class InventarItem {
   InventarItem({
     required this.name,
     required this.price,
-    required this.date
-
+    required this.date,
   });
 }
