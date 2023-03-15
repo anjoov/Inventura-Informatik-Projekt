@@ -57,20 +57,21 @@ class _HomePageState extends State<HomePage> {
               ],
             ));
   }
-  String convertDateTimeToString(DateTime dateTime) {
-  String year = dateTime.year.toString();
-  String month = dateTime.month.toString();
-  if (month.length == 1) {
-    month = "0$month";
-  }
-  String day = dateTime.month.toString();
-  if (day.length == 1) {
-    day = "0$day";
-  }
 
-  String normalDate = "$year/$month/$day";
-  return normalDate;
-}
+  String convertDateTimeToString(DateTime dateTime) {
+    String year = dateTime.year.toString();
+    String month = dateTime.month.toString();
+    if (month.length == 1) {
+      month = "0$month";
+    }
+    String day = dateTime.month.toString();
+    if (day.length == 1) {
+      day = "0$day";
+    }
+
+    String normalDate = "$year/$month/$day";
+    return normalDate;
+  }
 
   void save() {
     InventarItem newItem = InventarItem(
@@ -94,33 +95,30 @@ class _HomePageState extends State<HomePage> {
     newExpensePriceController.clear();
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Consumer<InventarData>(
         builder: (context, value, child) => Scaffold(
-          
             resizeToAvoidBottomInset: false,
             body: Column(
-              
               children: [
                 Container(
                   color: Color.fromARGB(255, 255, 255, 255),
                   height: 0.915 * 0.915 * MediaQuery.of(context).size.height,
                   child: ListView.builder(
-                      itemCount: value.getEveryItem().length,
-                      itemBuilder: (context, index) => ListTile(
-                          title: Text(value.getEveryItem()[index].name),
-                          subtitle: Text(convertDateTimeToString(value.getEveryItem()[index].date)),
-                          trailing: Text("€"+value.getEveryItem()[index].price),
-                          ),
-                          ),
-
+                    itemCount: value.getEveryItem().length,
+                    itemBuilder: (context, index) => ListTile(
+                      title: Text(value.getEveryItem()[index].name),
+                      subtitle: Text(convertDateTimeToString(
+                          value.getEveryItem()[index].date)),
+                      trailing: Text("€" + value.getEveryItem()[index].price),
+                    ),
+                  ),
                 ),
                 Container(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                    color: Color.fromARGB(255, 255, 255, 255),
                     height: 0.085 * 0.915 * MediaQuery.of(context).size.height,
-                    width:  MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width,
                     child: FloatingActionButton(
                         onPressed: addNewItem, child: Icon(Icons.add))),
               ],
