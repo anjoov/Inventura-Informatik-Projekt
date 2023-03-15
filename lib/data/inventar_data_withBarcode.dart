@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:helloworld/models/inventar_item_withBarcode.dart';
 
 class InventarDataWithBarcode extends ChangeNotifier {
@@ -17,3 +17,4 @@ class InventarDataWithBarcode extends ChangeNotifier {
     notifyListeners();
   }
 }
+*/

@@ -6,6 +6,7 @@ import "package:provider/provider.dart";
 import "../data/inventar_data.dart";
 import "../models/inventar_item.dart";
 
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -19,33 +20,76 @@ class _HomePageState extends State<HomePage> {
   final newExpenseNameController = TextEditingController();
 
   final newExpensePriceController = TextEditingController();
+  String dropDownValue = "Other";
+
+
+
+  void dropDownCallBack(String? selectedValue) {
+    if (selectedValue is String) {
+      setState(() {
+        dropDownValue = selectedValue;
+      });
+    }
+  }
 
 // Items adden
   void addNewItem() {
     showDialog(
         context: context,
-        builder: (context) => AlertDialog(
+        builder: (BuildContext context) => StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) => AlertDialog(
               title: Text("Add new Item"),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  //Item Name
-                  TextField(
-                      controller: newExpenseNameController,
-                      decoration: InputDecoration(
-                          border: InputBorder.none, hintText: "Name")),
+              content: Row(children: [
+                Expanded(
+                    child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    //Item Name
+                    TextField(
+                        controller: newExpenseNameController,
+                        decoration: InputDecoration(
+                            border: InputBorder.none, hintText: "Name")),
 
-                  //Item price
-                  TextField(
-                    controller: newExpensePriceController,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "Price",
+                    //Item price
+                    TextField(
+                      controller: newExpensePriceController,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: "Price",
+                      ),
                     ),
+                  ],
+                )),
+
+
+
+                DropdownButton(
+                  items:  const[
+                  DropdownMenuItem(
+                    value: "Entertainment",
+                    child: Text("Entertainment"),
+                  ),
+                  DropdownMenuItem(
+                    value: "Rent",
+                    child: Text("Rent"),
+                  ),
+                  DropdownMenuItem(
+                    value: "Insurance",
+                    child: Text("Insurance"),
+                  ),
+                  DropdownMenuItem(
+                    value: "Groceries",
+                    child: Text("Groceries"),
+                  ),
+                  DropdownMenuItem(
+                    value: "Other",
+                    child: Text("Other"),
                   ),
                 ],
-              ),
+                  value: dropDownValue,
+                  onChanged: dropDownCallBack,)
+              ]),
               // ignore: prefer_const_literals_to_create_immutables
               actions: [
                 //save button
@@ -60,7 +104,9 @@ class _HomePageState extends State<HomePage> {
                   child: Text("cancel"),
                 )
               ],
-            ));
+            )
+          ));
+
   }
 
   String convertDateTimeToString(DateTime dateTime) {
@@ -74,20 +120,23 @@ class _HomePageState extends State<HomePage> {
       day = "0$day";
     }
 
-  String normalDate = "$year/$month/$day";
-  return normalDate;
-}
+    String normalDate = "$year/$month/$day";
+    return normalDate;
+  }
 
   void save() {
     InventarItem newItem = InventarItem(
         name: newExpenseNameController.text,
         price: newExpensePriceController.text,
+        category: dropDownValue,
         date: DateTime.now());
 
-    Provider.of<InventarData>(context, listen: false).addNewItem(newItem);
+    Provider.of<InventarData>(context, listen: false).addNewItemToList(newItem);
 
     Navigator.pop(context);
+    print(dropDownValue);
     clear();
+    print(dropDownValue);
   }
 
   void cancel() {
@@ -100,37 +149,34 @@ class _HomePageState extends State<HomePage> {
     newExpensePriceController.clear();
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Consumer<InventarData>(
         builder: (context, value, child) => Scaffold(
-          
             resizeToAvoidBottomInset: false,
             body: Column(
               children: [
                 Expanded(
                     child: Row(
-                  children: [
-                  ],
+                  children: [],
                 )),
                 Container(
                   color: Color.fromARGB(255, 255, 255, 255),
                   height: 0.915 * 0.915 * MediaQuery.of(context).size.height,
                   child: ListView.builder(
-                      itemCount: value.getEveryItem().length,
-                      itemBuilder: (context, index) => ListTile(
-                          title: Text(value.getEveryItem()[index].name),
-                          subtitle: Text(convertDateTimeToString(value.getEveryItem()[index].date)),
-                          trailing: Text("€"+value.getEveryItem()[index].price),
-                          ),
-                          ),
-
+                    itemCount: value.getEveryItem().length,
+                    itemBuilder: (context, index) => ListTile(
+                      title: Text(value.getEveryItem()[index].name),
+                      subtitle: Text(convertDateTimeToString(
+                          value.getEveryItem()[index].date)+value.getEveryItem()[index].category+"  "),
+                      trailing: Text( "€" + value.getEveryItem()[index].price),
+                    ),
+                  ),
                 ),
                 Container(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                    color: Color.fromARGB(255, 255, 255, 255),
                     height: 0.085 * 0.915 * MediaQuery.of(context).size.height,
-                    width:  MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width,
                     child: FloatingActionButton(
                         onPressed: addNewItem, child: Icon(Icons.add))),
               ],

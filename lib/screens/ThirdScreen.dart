@@ -151,3 +151,20 @@ Center(
                 ),
             ),
           )
+
+Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    BarcodeWidget(data: data, barcode: barcode)
+                    SizedBox(height: 24),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 32),
+                      child: buildTextField(context)
+                    ),
+                  ],
+                ),
+            ),
+          )
+*/

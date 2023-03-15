@@ -17,7 +17,7 @@ void main() {
   );
 }
 int screenIndx = 0;
-var screenArr = [HomePage(), SecondScreen(), ThirdScreen(), Settings()];
+var screenArr = [HomePage(), SecondScreen(), Settings()];
 
 
 class MyApp extends StatefulWidget {
