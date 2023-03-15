@@ -12,7 +12,7 @@ class InventarData extends ChangeNotifier {
   }
 
 //neues item adden
-  void addNewItem(InventarItem newItem) {
+  void addNewItemToList(InventarItem newItem) {
     itemListe.add(newItem);
     notifyListeners();
   }
@@ -21,4 +21,10 @@ class InventarData extends ChangeNotifier {
   void deleteExpense(InventarItem item) {
     itemListe.remove(item);
   }
+
+
+  void sortName() {
+  itemListe.sort((a, b)=> a.name.toLowerCase().compareTo(b.name.toLowerCase()));
 }
+}
+

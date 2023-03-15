@@ -2,11 +2,10 @@
 
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:barcode_widget/barcode_widget.dart';
-
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 // bar code scanner
 
 class ThirdScreen extends StatefulWidget {
