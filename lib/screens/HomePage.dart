@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import "package:flutter/material.dart";
+import "package:flutter_slidable/flutter_slidable.dart";
+import "package:helloworld/components/itemTile.dart";
 import "package:provider/provider.dart";
 
 import "../data/inventar_data.dart";
@@ -27,6 +29,12 @@ class _HomePageState extends State<HomePage> {
         dropDownValue = selectedValue;
       });
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<InventarData>(context,listen:false).prepareData();
   }
 
 // Items adden
@@ -83,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                       value: dropDownValue,
-                      onChanged: (String? value){
+                      onChanged: (String? value) {
                         setState(() => dropDownValue = value!);
                       },
                     )
@@ -144,6 +152,10 @@ class _HomePageState extends State<HomePage> {
     newExpensePriceController.clear();
   }
 
+  void deleteItem(InventarItem item) {
+    Provider.of<InventarData>(context, listen: false).deleteItemFromList(item);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<InventarData>(
@@ -151,22 +163,20 @@ class _HomePageState extends State<HomePage> {
             resizeToAvoidBottomInset: false,
             body: Column(
               children: [
-                Expanded(
-                    child: Row(
-                  children: [],
-                )),
+                Expanded(child: Row()),
                 Container(
                   color: Color.fromARGB(255, 255, 255, 255),
                   height: 0.915 * 0.915 * MediaQuery.of(context).size.height,
                   child: ListView.builder(
+                    shrinkWrap: true,
                     itemCount: value.getEveryItem().length,
-                    itemBuilder: (context, index) => ListTile(
-                      title: Text(value.getEveryItem()[index].name),
-                      subtitle: Text(convertDateTimeToString(
-                              value.getEveryItem()[index].date) +"                                                                              "+
-                          value.getEveryItem()[index].category +
-                          "  "),
-                      trailing: Text("€" + value.getEveryItem()[index].price),
+                    itemBuilder: (context, index) => ItemTile(
+                      name: value.getEveryItem()[index].name,
+                      price: value.getEveryItem()[index].price,
+                      category: value.getEveryItem()[index].category,
+                      dateTime: value.getEveryItem()[index].date,
+                      deleteTapped: (item) =>
+                          deleteItem(value.getEveryItem()[index]),
                     ),
                   ),
                 ),

@@ -2,6 +2,8 @@
 
 import "package:flutter/material.dart";
 import "package:google_nav_bar/google_nav_bar.dart";
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'data/inventar_data.dart';
 import 'screens/SecondScreen.dart';
@@ -9,7 +11,13 @@ import 'screens/HomePage.dart';
 import 'screens/ThirdScreen.dart';
 import 'screens/Settings.dart';
 
-void main() {
+void main() async{
+  
+  
+  await Hive.initFlutter();
+
+  await Hive.openBox("inventar_database");
+
   runApp(
     MaterialApp(
       home: MyApp(),
