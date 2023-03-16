@@ -16,9 +16,9 @@ void main() {
     ),
   );
 }
-int screenIndx = 0;
-var screenArr = [HomePage(), SecondScreen(), Settings()];
 
+int screenIndx = 0;
+var screenArr = [HomePage(), SecondScreen(), ThirdScreen(), Settings()];
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -33,52 +33,46 @@ class MyAppState extends State<MyApp> {
     return ChangeNotifierProvider(
       create: (context) => InventarData(),
       builder: (context, child) => Scaffold(
-          resizeToAvoidBottomInset: false,
-      body: Column(
-        children: [
+        resizeToAvoidBottomInset: false,
+        body: Column(
+          children: [
             Container(
               height: 0.915 * MediaQuery.of(context).size.height,
               child: screenArr[screenIndx],
-              ),
+            ),
             Container(
-              width: MediaQuery.of(context).size.width,
-              height: 0.085 * MediaQuery.of(context).size.height,
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: GNav(
-                  onTabChange: (index) {
-                    screenIndx = index;
-                    setState(() {});
-                  },
-                  tabs: const [
-                    GButton(
-                      icon: Icons.home,
-                      text: 'Home',
-                    ),
-                    GButton(
-                      icon: Icons.home,
-                      text: 'Home',
-                    ),
-                    GButton(
-                      icon: Icons.home,
-                      text: 'Home',
-                    ),
-                    GButton(
-                      icon: Icons.settings,
-                      text: 'Settings',
-                    ),
-                  ],
-                ),
-              )),
-
-
-
-
-        ],
+                width: MediaQuery.of(context).size.width,
+                height: 0.085 * MediaQuery.of(context).size.height,
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: GNav(
+                    onTabChange: (index) {
+                      screenIndx = index;
+                      setState(() {});
+                    },
+                    tabs: const [
+                      GButton(
+                        icon: Icons.home,
+                        text: 'Home',
+                      ),
+                      GButton(
+                        icon: Icons.home,
+                        text: 'Home',
+                      ),
+                      GButton(
+                        icon: Icons.home,
+                        text: 'Home',
+                      ),
+                      GButton(
+                        icon: Icons.settings,
+                        text: 'Settings',
+                      ),
+                    ],
+                  ),
+                )),
+          ],
         ),
       ),
     );
   }
 }
-
-
