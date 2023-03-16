@@ -72,9 +72,11 @@ class ThirdScreenState extends State<ThirdScreen> {
       int i;
       String name;
       String price;
+      String dropDown;
       i = itemsWithBarcodes.indexOf(scanResult);
       name = itemsWithBarcodes.elementAt(i + 1);
       price = itemsWithBarcodes.elementAt(i + 2);
+      dropDown = itemsWithBarcodes.elementAt(i + 3);
       InventarItem newItem = InventarItem(
           name: name,
           price: price,
@@ -84,6 +86,7 @@ class ThirdScreenState extends State<ThirdScreen> {
       Provider.of<InventarData>(context, listen: false)
           .addNewItemToList(newItem);
       Navigator.pop(context);
+      clear();
     } else {
       itemsWithBarcodes.add(scanResult);
       addNewItem();
@@ -97,6 +100,9 @@ class ThirdScreenState extends State<ThirdScreen> {
   void save() {
     itemsWithBarcodes.add(barcodeItemName.text);
     itemsWithBarcodes.add(barcodeItemPrice.text);
+    itemsWithBarcodes.add(dropDownValue);
+
+    print(itemsWithBarcodes);
 
     InventarItem newItem = InventarItem(
         name: barcodeItemName.text,
