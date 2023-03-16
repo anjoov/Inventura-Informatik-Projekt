@@ -6,7 +6,6 @@ import "package:provider/provider.dart";
 import "../data/inventar_data.dart";
 import "../models/inventar_item.dart";
 
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -22,8 +21,6 @@ class _HomePageState extends State<HomePage> {
   final newExpensePriceController = TextEditingController();
   String dropDownValue = "Other";
 
-
-
   void dropDownCallBack(String? selectedValue) {
     if (selectedValue is String) {
       setState(() {
@@ -37,76 +34,74 @@ class _HomePageState extends State<HomePage> {
     showDialog(
         context: context,
         builder: (BuildContext context) => StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) => AlertDialog(
-              title: Text("Add new Item"),
-              content: Row(children: [
-                Expanded(
-                    child: Column(
-                  mainAxisSize: MainAxisSize.min,
+            builder: (BuildContext context, StateSetter setState) =>
+                AlertDialog(
+                  title: Text("Add new Item"),
+                  content: Row(children: [
+                    Expanded(
+                        child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        //Item Name
+                        TextField(
+                            controller: newExpenseNameController,
+                            decoration: InputDecoration(
+                                border: InputBorder.none, hintText: "Name")),
+
+                        //Item price
+                        TextField(
+                          controller: newExpensePriceController,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Price",
+                          ),
+                        ),
+                      ],
+                    )),
+                    DropdownButton(
+                      items: const [
+                        DropdownMenuItem(
+                          value: "Entertainment",
+                          child: Text("Entertainment"),
+                        ),
+                        DropdownMenuItem(
+                          value: "Rent",
+                          child: Text("Rent"),
+                        ),
+                        DropdownMenuItem(
+                          value: "Insurance",
+                          child: Text("Insurance"),
+                        ),
+                        DropdownMenuItem(
+                          value: "Groceries",
+                          child: Text("Groceries"),
+                        ),
+                        DropdownMenuItem(
+                          value: "Other",
+                          child: Text("Other"),
+                        ),
+                      ],
+                      value: dropDownValue,
+                      onChanged: (String? value){
+                        setState(() => dropDownValue = value!);
+                      },
+                    )
+                  ]),
                   // ignore: prefer_const_literals_to_create_immutables
-                  children: [
-                    //Item Name
-                    TextField(
-                        controller: newExpenseNameController,
-                        decoration: InputDecoration(
-                            border: InputBorder.none, hintText: "Name")),
-
-                    //Item price
-                    TextField(
-                      controller: newExpensePriceController,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Price",
-                      ),
+                  actions: [
+                    //save button
+                    //cancel button
+                    MaterialButton(
+                      onPressed: cancel,
+                      child: Text("cancel"),
                     ),
+                    MaterialButton(
+                      onPressed: save,
+                      child: Text("Save"),
+                    )
                   ],
-                )),
-
-
-
-                DropdownButton(
-                  items:  const[
-                  DropdownMenuItem(
-                    value: "Entertainment",
-                    child: Text("Entertainment"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Rent",
-                    child: Text("Rent"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Insurance",
-                    child: Text("Insurance"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Groceries",
-                    child: Text("Groceries"),
-                  ),
-                  DropdownMenuItem(
-                    value: "Other",
-                    child: Text("Other"),
-                  ),
-                ],
-                  value: dropDownValue,
-                  onChanged: dropDownCallBack,)
-              ]),
-              // ignore: prefer_const_literals_to_create_immutables
-              actions: [
-                //save button
-                MaterialButton(
-                  onPressed: save,
-                  child: Text("Save"),
-                ),
-
-                //cancel button
-                MaterialButton(
-                  onPressed: cancel,
-                  child: Text("cancel"),
-                )
-              ],
-            )
-          ));
-
+                )));
   }
 
   String convertDateTimeToString(DateTime dateTime) {
@@ -132,11 +127,11 @@ class _HomePageState extends State<HomePage> {
         date: DateTime.now());
 
     Provider.of<InventarData>(context, listen: false).addNewItemToList(newItem);
+    Provider.of<InventarData>(context, listen: false).printLen();
 
     Navigator.pop(context);
     print(dropDownValue);
     clear();
-    print(dropDownValue);
   }
 
   void cancel() {
@@ -168,8 +163,10 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (context, index) => ListTile(
                       title: Text(value.getEveryItem()[index].name),
                       subtitle: Text(convertDateTimeToString(
-                          value.getEveryItem()[index].date)+value.getEveryItem()[index].category+"  "),
-                      trailing: Text( "€" + value.getEveryItem()[index].price),
+                              value.getEveryItem()[index].date) +"                                                                              "+
+                          value.getEveryItem()[index].category +
+                          "  "),
+                      trailing: Text("€" + value.getEveryItem()[index].price),
                     ),
                   ),
                 ),

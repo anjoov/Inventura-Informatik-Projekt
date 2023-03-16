@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import "package:flutter/material.dart";
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:helloworld/data/inventar_data.dart';
@@ -15,6 +16,12 @@ class SecondScreenState extends State<SecondScreen> {
   Widget build(BuildContext context) {
     return Consumer<InventarData>(
       builder: (context, value, child)  => Scaffold(
+        body: Column(
+          children: <Widget>[
+
+
+          ]
+        )
 
 
 
@@ -25,3 +32,4 @@ class SecondScreenState extends State<SecondScreen> {
 
 
 }
+

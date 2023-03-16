@@ -22,9 +22,12 @@ class InventarData extends ChangeNotifier {
     itemListe.remove(item);
   }
 
-
   void sortName() {
-  itemListe.sort((a, b)=> a.name.toLowerCase().compareTo(b.name.toLowerCase()));
-}
-}
+    itemListe
+        .sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+  }
 
+  void printLen() {
+    print(itemListe.length);
+  }
+}
