@@ -1,5 +1,5 @@
 // ignore_for_file: prefer_const_constructors
-
+/*
 import "package:flutter/material.dart";
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -69,19 +69,15 @@ class ThirdScreenState extends State<ThirdScreen> {
     setState(() => this.scanResult = scanResult);
 
     if (itemsWithBarcodes.contains(scanResult)) {
-      int i;
       String name;
       String price;
       String dropDown;
-      i = itemsWithBarcodes.indexOf(scanResult);
+      int i = itemsWithBarcodes.indexOf(scanResult);
       name = itemsWithBarcodes.elementAt(i + 1);
       price = itemsWithBarcodes.elementAt(i + 2);
       dropDown = itemsWithBarcodes.elementAt(i + 3);
       InventarItem newItem = InventarItem(
-          name: name,
-          price: price,
-          category: dropDownValue,
-          date: DateTime.now());
+          name: name, price: price, category: dropDown, date: DateTime.now());
 
       Provider.of<InventarData>(context, listen: false)
           .addNewItemToList(newItem);
@@ -101,8 +97,6 @@ class ThirdScreenState extends State<ThirdScreen> {
     itemsWithBarcodes.add(barcodeItemName.text);
     itemsWithBarcodes.add(barcodeItemPrice.text);
     itemsWithBarcodes.add(dropDownValue);
-
-    print(itemsWithBarcodes);
 
     InventarItem newItem = InventarItem(
         name: barcodeItemName.text,
@@ -199,3 +193,4 @@ class ThirdScreenState extends State<ThirdScreen> {
     barcodeItemPrice.clear();
   }
 }
+*/

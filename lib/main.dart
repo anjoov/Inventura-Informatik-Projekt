@@ -18,7 +18,7 @@ void main() {
 }
 
 int screenIndx = 0;
-var screenArr = [HomePage(), SecondScreen(), ThirdScreen(), Settings()];
+var screenArr = [HomePage(), SecondScreen(), Settings()];
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -28,6 +28,7 @@ class MyApp extends StatefulWidget {
 }
 
 class MyAppState extends State<MyApp> {
+  List itemsWithBarcodes = [];
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
