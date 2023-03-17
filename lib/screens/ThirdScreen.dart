@@ -80,7 +80,7 @@ class ThirdScreenState extends State<ThirdScreen> {
 
       Provider.of<InventarData>(context, listen: false)
           .addNewItemToList(newItem);
-      Navigator.pop(context);
+      
 
       Provider.of<InventarData>(context, listen: false).lenOthers("Other");
       Provider.of<InventarData>(context, listen: false).allPriceItems();
@@ -110,11 +110,9 @@ class ThirdScreenState extends State<ThirdScreen> {
 
     Provider.of<InventarData>(context, listen: false).addNewItemToList(newItem);
 
-    Navigator.pop(context);
-    Provider.of<InventarData>(context, listen: false).lenOthers("Other");
-    Provider.of<InventarData>(context, listen: false).allPriceItems();
-
     clear();
+    Navigator.pop(context);
+    
   }
 
   void addNewItem() {

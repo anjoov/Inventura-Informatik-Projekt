@@ -46,23 +46,18 @@ class InventarData extends ChangeNotifier {
       assert(doublePrice is double);
       totalAmount += doublePrice;
     }
-    print(totalAmount);
     return totalAmount;
   }
 
   double lenOthers(String varString) {
     double amount = 0;
     for (int i = 0; i < itemListe.length; i++) {
-      print(itemListe[i].category);
-      print(varString);
       if (itemListe[i].category == varString) {
         var doublePrice = double.parse(itemListe[i].price);
         assert(doublePrice is double);
         amount += doublePrice;
       }
     }
-    print(amount);
-    print("TEST");
     return amount;
   }
 }
