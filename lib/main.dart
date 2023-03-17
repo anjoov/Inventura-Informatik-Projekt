@@ -11,9 +11,7 @@ import 'screens/HomePage.dart';
 import 'screens/ThirdScreen.dart';
 import 'screens/Settings.dart';
 
-void main() async{
-  
-  
+void main() async {
   await Hive.initFlutter();
 
   await Hive.openBox("inventar_database");
@@ -26,7 +24,7 @@ void main() async{
 }
 
 int screenIndx = 0;
-var screenArr = [HomePage(), SecondScreen(), Settings()];
+var screenArr = [HomePage(), SecondScreen(), ThirdScreen(), Settings()];
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
