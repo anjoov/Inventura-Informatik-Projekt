@@ -98,6 +98,9 @@ class ThirdScreenState extends State<ThirdScreen> {
 
   void save() {
     // add to list --
+    Barcodes.barcodeList.add(barcodeItemName.text);
+    Barcodes.barcodeList.add(barcodeItemPrice.text);
+    Barcodes.barcodeList.add(dropDownValue);
 
     InventarItem newItem = InventarItem(
         name: barcodeItemName.text,
