@@ -137,9 +137,6 @@ class _HomePageState extends State<HomePage> {
     Provider.of<InventarData>(context, listen: false).addNewItemToList(newItem);
 
     Navigator.pop(context);
-    Provider.of<InventarData>(context, listen: false).lenOthers("Other");
-    Provider.of<InventarData>(context, listen: false).allPriceItems();
-
     clear();
   }
 

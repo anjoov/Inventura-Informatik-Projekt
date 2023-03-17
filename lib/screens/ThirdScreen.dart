@@ -69,10 +69,12 @@ class ThirdScreenState extends State<ThirdScreen> {
     setState(() => this.scanResult = scanResult);
 
     if (Barcodes.barcodeList.contains(scanResult)) {
+      print("TESTTESTTESTTEST");
       int i = Barcodes.barcodeList.indexOf(scanResult);
-      String name = Barcodes.barcodeList.elementAt(i + 1);
-      String price = Barcodes.barcodeList.elementAt(i + 2);
-      String dropDown = Barcodes.barcodeList.elementAt(i + 3);
+      print(Barcodes.barcodeList);
+      String name = Barcodes.barcodeList[i + 1];
+      String price = Barcodes.barcodeList[i + 2];
+      String dropDown = Barcodes.barcodeList[i + 3];
       InventarItem newItem = InventarItem(
           name: name, price: price, category: dropDown, date: DateTime.now());
 
