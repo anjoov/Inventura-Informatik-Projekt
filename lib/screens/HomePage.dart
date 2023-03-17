@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<InventarData>(context,listen:false).prepareData();
+    Provider.of<InventarData>(context, listen: false).prepareData();
   }
 
 // Items adden
@@ -135,10 +135,11 @@ class _HomePageState extends State<HomePage> {
         date: DateTime.now());
 
     Provider.of<InventarData>(context, listen: false).addNewItemToList(newItem);
-    Provider.of<InventarData>(context, listen: false).printLen();
 
     Navigator.pop(context);
-    print(dropDownValue);
+    Provider.of<InventarData>(context, listen: false).lenOthers("Other");
+    Provider.of<InventarData>(context, listen: false).allPriceItems();
+
     clear();
   }
 
