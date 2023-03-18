@@ -135,9 +135,9 @@ class _HomePageState extends State<HomePage> {
         date: DateTime.now());
 
     Provider.of<InventarData>(context, listen: false).addNewItemToList(newItem);
-
     Navigator.pop(context);
     clear();
+    print(Provider.of<InventarData>(context, listen: false).allPriceItems());
   }
 
   void cancel() {

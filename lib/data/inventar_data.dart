@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helloworld/data/hive_database.dart';
 import 'package:helloworld/models/inventar_item.dart';
-import "package:helloworld/data/hive_database.dart";
 
 class InventarData extends ChangeNotifier {
 //Liste aller items
@@ -43,9 +42,9 @@ class InventarData extends ChangeNotifier {
     double totalAmount = 0;
     for (int i = 0; i < itemListe.length; i++) {
       var doublePrice = double.parse(itemListe[i].price);
-      assert(doublePrice is double);
       totalAmount += doublePrice;
     }
+    
     return totalAmount;
   }
 
@@ -54,8 +53,8 @@ class InventarData extends ChangeNotifier {
     for (int i = 0; i < itemListe.length; i++) {
       if (itemListe[i].category == varString) {
         var doublePrice = double.parse(itemListe[i].price);
-        assert(doublePrice is double);
         amount += doublePrice;
+        
       }
     }
     return amount;

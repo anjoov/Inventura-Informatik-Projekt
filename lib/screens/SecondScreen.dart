@@ -5,24 +5,25 @@ import "package:flutter/material.dart";
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:helloworld/data/inventar_data.dart';
 import 'package:provider/provider.dart';
+import "package:helloworld/widget/pie_chart_sections.dart";
 
 class SecondScreen extends StatefulWidget {
-  const SecondScreen({Key? key}) : super(key: key);
-
   @override
-  State<SecondScreen> createState() => SecondScreenState();
+  State<StatefulWidget> createState() => SecondScreenState();
 }
 
-class SecondScreenState extends State<SecondScreen> {
+class SecondScreenState extends State {
   @override
-  Widget build(BuildContext context) {
-    int len;
-    return Consumer<InventarData>(
-      builder: (context, value, child) => Scaffold(
-  
-        
-        
-        body: Column()),
-    );
-  }
+  Widget build(BuildContext context) => Card(
+    child: Column(
+      children: 
+        <Widget>[
+          PieChart(
+            PieChartData(
+              sections: getSections(),
+            ),
+          ),
+        ]
+      )
+  );
 }
