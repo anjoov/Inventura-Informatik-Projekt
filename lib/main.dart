@@ -54,7 +54,6 @@ class MyAppState extends State<MyApp> {
                   alignment: Alignment.topCenter,
                   child: GNav(
                     onTabChange: (index) {
-                      print(InventarData().allPriceItems());
                       screenIndx = index;
                       setState(() {});
                     },
@@ -69,7 +68,7 @@ class MyAppState extends State<MyApp> {
                       ),
                       GButton(
                         icon: Icons.add_a_photo,
-                        text: 'Barcode Scanner',
+                        text: 'Barcode',
                       ),
                       GButton(
                         icon: Icons.settings,
