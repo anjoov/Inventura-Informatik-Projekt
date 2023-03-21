@@ -6,7 +6,7 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import "../data/inventar_data.dart";
 import "../models/inventar_item.dart";
 import "package:provider/provider.dart";
-import "../data/barcode.dart";
+import "../data/globals.dart";
 
 // bar code scanner
 
@@ -68,26 +68,22 @@ class ThirdScreenState extends State<ThirdScreen> {
 
     setState(() => this.scanResult = scanResult);
 
-    if (Barcodes.barcodeList.contains(scanResult)) {
+    if (Globals.barcodeList.contains(scanResult)) {
       print("TESTTESTTESTTEST");
-      int i = Barcodes.barcodeList.indexOf(scanResult);
-      print(Barcodes.barcodeList);
-      String name = Barcodes.barcodeList[i + 1];
-      String price = Barcodes.barcodeList[i + 2];
-      String dropDown = Barcodes.barcodeList[i + 3];
+      int i = Globals.barcodeList.indexOf(scanResult);
+      print(Globals.barcodeList);
+      String name = Globals.barcodeList[i + 1];
+      String price = Globals.barcodeList[i + 2];
+      String dropDown = Globals.barcodeList[i + 3];
       InventarItem newItem = InventarItem(
           name: name, price: price, category: dropDown, date: DateTime.now());
 
       Provider.of<InventarData>(context, listen: false)
           .addNewItemToList(newItem);
-      
-
-      Provider.of<InventarData>(context, listen: false).lenOthers("Other");
-      Provider.of<InventarData>(context, listen: false).allPriceItems();
       clear();
     } else {
-      Barcodes.barcodeList.add(scanResult);
-      print(Barcodes.barcodeList);
+      Globals.barcodeList.add(scanResult);
+      print(Globals.barcodeList);
       addNewItem();
     }
   }
@@ -98,9 +94,9 @@ class ThirdScreenState extends State<ThirdScreen> {
 
   void save() {
     // add to list --
-    Barcodes.barcodeList.add(barcodeItemName.text);
-    Barcodes.barcodeList.add(barcodeItemPrice.text);
-    Barcodes.barcodeList.add(dropDownValue);
+    Globals.barcodeList.add(barcodeItemName.text);
+    Globals.barcodeList.add(barcodeItemPrice.text);
+    Globals.barcodeList.add(dropDownValue);
 
     InventarItem newItem = InventarItem(
         name: barcodeItemName.text,
@@ -110,9 +106,11 @@ class ThirdScreenState extends State<ThirdScreen> {
 
     Provider.of<InventarData>(context, listen: false).addNewItemToList(newItem);
 
-    clear();
     Navigator.pop(context);
-    
+    Provider.of<InventarData>(context, listen: false).lenOthers("Other");
+    Provider.of<InventarData>(context, listen: false).allPriceItems();
+
+    clear();
   }
 
   void addNewItem() {

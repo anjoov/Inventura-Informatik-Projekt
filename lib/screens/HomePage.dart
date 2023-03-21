@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                           controller: newExpensePriceController,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: "Price (euro.cents)",
+                            hintText: "Price (€.ct)",
                           ),
                         ),
                       ],

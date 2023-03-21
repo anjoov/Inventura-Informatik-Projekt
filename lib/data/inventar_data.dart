@@ -44,7 +44,7 @@ class InventarData extends ChangeNotifier {
       var doublePrice = double.parse(itemListe[i].price);
       totalAmount += doublePrice;
     }
-    
+
     return totalAmount;
   }
 
@@ -54,7 +54,6 @@ class InventarData extends ChangeNotifier {
       if (itemListe[i].category == varString) {
         var doublePrice = double.parse(itemListe[i].price);
         amount += doublePrice;
-        
       }
     }
     return amount;
