@@ -6,6 +6,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:helloworld/data/inventar_data.dart';
 import 'package:provider/provider.dart';
 import "package:helloworld/widget/pie_chart_sections.dart";
+import "../data/globals.dart";
 
 class SecondScreen extends StatefulWidget {
   @override
@@ -15,15 +16,12 @@ class SecondScreen extends StatefulWidget {
 class SecondScreenState extends State {
   @override
   Widget build(BuildContext context) => Card(
-    child: Column(
-      children: 
-        <Widget>[
-          PieChart(
-            PieChartData(
-              sections: getSections(),
-            ),
+      color: Globals.backgroundColor,
+      child: Column(children: <Widget>[
+        PieChart(
+          PieChartData(
+            sections: getSections(),
           ),
-        ]
-      )
-  );
+        ),
+      ]));
 }

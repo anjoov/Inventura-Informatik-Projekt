@@ -10,6 +10,7 @@ import 'screens/SecondScreen.dart';
 import 'screens/HomePage.dart';
 import 'screens/ThirdScreen.dart';
 import 'screens/Settings.dart';
+import "../data/globals.dart";
 
 void main() async {
   await Hive.initFlutter();
@@ -48,11 +49,17 @@ class MyAppState extends State<MyApp> {
               child: screenArr[screenIndx],
             ),
             Container(
+                color: Globals.backgroundColor,
                 width: MediaQuery.of(context).size.width,
                 height: 0.085 * MediaQuery.of(context).size.height,
                 child: Align(
                   alignment: Alignment.topCenter,
                   child: GNav(
+                    //rippleColor: Globals.textColor,
+                    //hoverColor: Globals.textColor,
+                    color: Globals.textColor,
+                    activeColor: Globals.textColor,
+                    //backgroundColor: Globals.backgroundColor,
                     onTabChange: (index) {
                       screenIndx = index;
                       setState(() {});

@@ -25,6 +25,7 @@ class ThirdScreenState extends State<ThirdScreen> {
     return Consumer<InventarData>(
         builder: (context, value, child) => Scaffold(
             appBar: AppBar(
+              //App Bar wegnehmen?
               title: Text("Scan Barcode"),
               centerTitle: true,
             ),
