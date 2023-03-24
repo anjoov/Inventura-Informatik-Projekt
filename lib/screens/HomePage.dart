@@ -4,9 +4,11 @@ import "package:flutter/material.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
 import "package:helloworld/components/itemTile.dart";
 import "package:provider/provider.dart";
+import "../provider/theme_provider.dart";
 
 import "../data/inventar_data.dart";
 import "../models/inventar_item.dart";
+import "../data/globals.dart";
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -163,7 +165,7 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Expanded(child: Row()),
                 Container(
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: Globals.backgroundColor,
                   height: 0.915 * 0.915 * MediaQuery.of(context).size.height,
                   child: ListView.builder(
                     shrinkWrap: true,
@@ -179,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Container(
-                    color: Color.fromARGB(255, 255, 255, 255),
+                    color: Globals.backgroundColor,
                     height: 0.085 * 0.915 * MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
                     child: FloatingActionButton(
