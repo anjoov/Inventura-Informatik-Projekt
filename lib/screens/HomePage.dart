@@ -184,7 +184,12 @@ class _HomePageState extends State<HomePage> {
                     height: 0.085 * 0.915 * MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
                     child: FloatingActionButton(
-                        onPressed: addNewItem, child: Icon(Icons.add))),
+                        backgroundColor: Globals.themeColor,
+                        onPressed: addNewItem,
+                        child: Icon(
+                          Icons.add,
+                          color: Globals.textColor,
+                        ))),
               ],
             )));
   }

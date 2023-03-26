@@ -19,6 +19,7 @@ class SettingsState extends State<Settings> {
         home: Scaffold(
             body: Center(
                 child: Container(
+      color: Globals.backgroundColor,
       child: FlutterSwitch(
         width: 100.0,
         height: 55.0,
@@ -53,9 +54,11 @@ class SettingsState extends State<Settings> {
             if (val) {
               Globals.textColor = Colors.white;
               Globals.backgroundColor = Colors.grey.shade900;
+              Globals.themeColor = Colors.blueAccent;
             } else {
               Globals.textColor = Colors.black;
               Globals.backgroundColor = Colors.white;
+              Globals.themeColor = Colors.blue;
             }
           });
         },

@@ -5,4 +5,5 @@ class Globals {
   static bool nightmode = false;
   static Color textColor = Colors.black;
   static Color backgroundColor = Colors.white;
+  static Color themeColor = Colors.blue;
 }

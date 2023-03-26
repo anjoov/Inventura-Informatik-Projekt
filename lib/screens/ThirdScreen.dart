@@ -24,6 +24,7 @@ class ThirdScreenState extends State<ThirdScreen> {
   Widget build(BuildContext context) {
     return Consumer<InventarData>(
         builder: (context, value, child) => Scaffold(
+            backgroundColor: Globals.backgroundColor,
             appBar: AppBar(
               //App Bar wegnehmen?
               title: Text("Scan Barcode"),
@@ -35,7 +36,7 @@ class ThirdScreenState extends State<ThirdScreen> {
                     children: <Widget>[
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.amber,
+                      primary: Globals.themeColor,
                       onPrimary: Globals.textColor,
                     ),
                     icon: Icon(Icons.camera_alt_outlined),
@@ -47,8 +48,7 @@ class ThirdScreenState extends State<ThirdScreen> {
                     scanResult == null
                         ? "Scan a code!"
                         : "Scan result: $scanResult",
-                    style: TextStyle(fontSize: 18),
-                    selectionColor: Globals.textColor,
+                    style: TextStyle(fontSize: 18, color: Globals.textColor),
                   ),
                 ]))));
   }
