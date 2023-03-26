@@ -2,15 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import "../data/globals.dart";
 
 class ItemTile extends StatelessWidget {
-  
   final String name;
   final String price;
   final String category;
   final DateTime dateTime;
   final void Function(BuildContext)? deleteTapped;
-
 
   const ItemTile({
     super.key,
@@ -21,7 +20,7 @@ class ItemTile extends StatelessWidget {
     required this.deleteTapped,
   });
 
-    String convertDateTimeToString(DateTime dateTime) {
+  String convertDateTimeToString(DateTime dateTime) {
     String year = dateTime.year.toString();
     String month = dateTime.month.toString();
     if (month.length == 1) {
@@ -36,23 +35,22 @@ class ItemTile extends StatelessWidget {
     return normalDate;
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Slidable(
-      endActionPane: ActionPane(
-        motion: const StretchMotion(), 
-        children: [
-          SlidableAction(
-            onPressed: deleteTapped,
-            icon: Icons.delete,
-            backgroundColor: Color.fromARGB(255, 175, 42, 33),)
-        ]),
-
+      endActionPane: ActionPane(motion: const StretchMotion(), children: [
+        SlidableAction(
+          onPressed: deleteTapped,
+          icon: Icons.delete,
+          backgroundColor: Color.fromARGB(255, 175, 42, 33),
+        )
+      ]),
       child: ListTile(
+        textColor: Globals.textColor,
         title: Text(name),
-        subtitle: Text(convertDateTimeToString(dateTime)+"                                                                        " + category),
+        subtitle: Text(convertDateTimeToString(dateTime) +
+            "                                                                        " +
+            category),
         trailing: Text("€$price"),
       ),
     );

@@ -36,7 +36,7 @@ class ThirdScreenState extends State<ThirdScreen> {
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
                       primary: Colors.amber,
-                      onPrimary: Colors.black,
+                      onPrimary: Globals.textColor,
                     ),
                     icon: Icon(Icons.camera_alt_outlined),
                     label: Text("start scan"),
@@ -48,6 +48,7 @@ class ThirdScreenState extends State<ThirdScreen> {
                         ? "Scan a code!"
                         : "Scan result: $scanResult",
                     style: TextStyle(fontSize: 18),
+                    selectionColor: Globals.textColor,
                   ),
                 ]))));
   }
