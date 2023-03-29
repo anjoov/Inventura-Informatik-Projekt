@@ -7,4 +7,5 @@ class Globals {
   static Color backgroundColor = Colors.white;
   static Color themeColor = Colors.blue;
   static var currency = '€';
+  static dynamic initialIndex = 0;
 }

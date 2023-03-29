@@ -24,7 +24,8 @@ class SettingsState extends State<Settings> {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          new Text("\n\n\n\n\nDarkmode"),
+                          Text("\n\n\n\n\nDarkmode",
+                              style: TextStyle(color: Globals.textColor)),
                           FlutterSwitch(
                             width: 80.0,
                             height: 50.0,
@@ -69,7 +70,8 @@ class SettingsState extends State<Settings> {
                               });
                             },
                           ),
-                          new Text("\n\nCurrency"),
+                          Text("\n\nCurrency",
+                              style: TextStyle(color: Globals.textColor)),
                           ToggleSwitch(
                             minWidth: 90.0,
                             cornerRadius: 20.0,
@@ -81,17 +83,20 @@ class SettingsState extends State<Settings> {
                             activeFgColor: Colors.white,
                             inactiveBgColor: Colors.grey,
                             inactiveFgColor: Colors.white,
-                            initialLabelIndex: 0,
+                            initialLabelIndex: Globals.initialIndex,
                             totalSwitches: 3,
                             labels: ['€', '\$', '£'],
                             radiusStyle: true,
                             onToggle: (index) {
                               if (index == 0) {
                                 Globals.currency = "€";
+                                Globals.initialIndex = index;
                               } else if (index == 1) {
                                 Globals.currency = "\$";
+                                Globals.initialIndex = index;
                               } else {
                                 Globals.currency = "£";
+                                Globals.initialIndex = index;
                               }
                             },
                           ),

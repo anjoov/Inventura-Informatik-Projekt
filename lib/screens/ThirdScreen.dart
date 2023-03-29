@@ -71,9 +71,7 @@ class ThirdScreenState extends State<ThirdScreen> {
     setState(() => this.scanResult = scanResult);
 
     if (Globals.barcodeList.contains(scanResult)) {
-      print("TESTTESTTESTTEST");
       int i = Globals.barcodeList.indexOf(scanResult);
-      print(Globals.barcodeList);
       String name = Globals.barcodeList[i + 1];
       String price = Globals.barcodeList[i + 2];
       String dropDown = Globals.barcodeList[i + 3];
@@ -85,7 +83,6 @@ class ThirdScreenState extends State<ThirdScreen> {
       clear();
     } else {
       Globals.barcodeList.add(scanResult);
-      print(Globals.barcodeList);
       addNewItem();
     }
   }
