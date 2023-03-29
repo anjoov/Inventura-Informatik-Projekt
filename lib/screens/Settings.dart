@@ -5,6 +5,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import "../data/globals.dart";
 import 'package:toggle_switch/toggle_switch.dart';
+import '../main.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -67,6 +68,7 @@ class SettingsState extends State<Settings> {
                                   Globals.backgroundColor = Colors.white;
                                   Globals.themeColor = Colors.blue;
                                 }
+                                main();
                               });
                             },
                           ),
