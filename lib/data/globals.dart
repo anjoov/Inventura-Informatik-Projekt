@@ -6,4 +6,5 @@ class Globals {
   static Color textColor = Colors.black;
   static Color backgroundColor = Colors.white;
   static Color themeColor = Colors.blue;
+  static var currency = '€';
 }

@@ -51,7 +51,7 @@ class ItemTile extends StatelessWidget {
         subtitle: Text(convertDateTimeToString(dateTime) +
             "                                                                        " +
             category),
-        trailing: Text("€$price"),
+        trailing: Text(Globals.currency + price),
       ),
     );
   }

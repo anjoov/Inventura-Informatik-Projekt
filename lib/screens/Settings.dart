@@ -73,17 +73,24 @@ class SettingsState extends State<Settings> {
                             cornerRadius: 20.0,
                             activeBgColors: [
                               [Colors.green[800]!],
-                              [Colors.red[800]!]
+                              [Colors.red[800]!],
+                              [Colors.blue[800]!]
                             ],
                             activeFgColor: Colors.white,
                             inactiveBgColor: Colors.grey,
                             inactiveFgColor: Colors.white,
-                            initialLabelIndex: 1,
-                            totalSwitches: 2,
-                            labels: ['True', 'False'],
+                            initialLabelIndex: 0,
+                            totalSwitches: 3,
+                            labels: ['€', '\$', '£'],
                             radiusStyle: true,
                             onToggle: (index) {
-                              print('switched to: $index');
+                              if (index == 0) {
+                                Globals.currency = "€";
+                              } else if (index == 1) {
+                                Globals.currency = "\$";
+                              } else {
+                                Globals.currency = "£";
+                              }
                             },
                           ),
                         ])))));
