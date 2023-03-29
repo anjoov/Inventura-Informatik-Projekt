@@ -22,8 +22,10 @@ class SettingsState extends State<Settings> {
                 child: Container(
                     color: Globals.backgroundColor,
                     child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        //mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
+                          new Text("\n\n\n\n\nDarkmode"),
                           FlutterSwitch(
                             width: 80.0,
                             height: 50.0,
@@ -68,6 +70,7 @@ class SettingsState extends State<Settings> {
                               });
                             },
                           ),
+                          new Text("\n\nCurrency"),
                           ToggleSwitch(
                             minWidth: 90.0,
                             cornerRadius: 20.0,
