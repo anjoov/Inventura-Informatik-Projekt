@@ -22,7 +22,6 @@ class SettingsState extends State<Settings> {
                 child: Container(
                     color: Globals.backgroundColor,
                     child: Column(
-                        //mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           new Text("\n\n\n\n\nDarkmode"),
