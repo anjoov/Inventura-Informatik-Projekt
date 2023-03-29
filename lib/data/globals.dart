@@ -8,4 +8,5 @@ class Globals {
   static Color themeColor = Colors.blue;
   static var currency = '€';
   static dynamic initialIndex = 0;
+  static dynamic initialIndexTheme = 0;
 }

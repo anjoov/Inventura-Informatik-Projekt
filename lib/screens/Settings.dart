@@ -62,11 +62,42 @@ class SettingsState extends State<Settings> {
                                   Globals.textColor = Colors.white;
                                   Globals.backgroundColor =
                                       Colors.grey.shade900;
-                                  Globals.themeColor = Colors.blueAccent;
                                 } else {
                                   Globals.textColor = Colors.black;
                                   Globals.backgroundColor = Colors.white;
+                                }
+                                main();
+                              });
+                            },
+                          ),
+                          Text("\n\nTheme",
+                              style: TextStyle(color: Globals.textColor)),
+                          ToggleSwitch(
+                            minWidth: 90.0,
+                            cornerRadius: 20.0,
+                            activeBgColors: [
+                              [Globals.themeColor],
+                              [Globals.themeColor],
+                              [Globals.themeColor]
+                            ],
+                            activeFgColor: Colors.white,
+                            inactiveBgColor: Globals.themeColor = Colors.black,
+                            inactiveFgColor: Colors.white,
+                            initialLabelIndex: Globals.initialIndexTheme,
+                            totalSwitches: 3,
+                            labels: ['blue', 'green', 'red'],
+                            radiusStyle: true,
+                            onToggle: (index) {
+                              setState(() {
+                                if (index == 0) {
                                   Globals.themeColor = Colors.blue;
+                                  Globals.initialIndexTheme = index;
+                                } else if (index == 1) {
+                                  Globals.themeColor = Colors.green;
+                                  Globals.initialIndexTheme = index;
+                                } else {
+                                  Globals.themeColor = Colors.red;
+                                  Globals.initialIndexTheme = index;
                                 }
                                 main();
                               });
@@ -78,9 +109,9 @@ class SettingsState extends State<Settings> {
                             minWidth: 90.0,
                             cornerRadius: 20.0,
                             activeBgColors: [
-                              [Colors.green[800]!],
-                              [Colors.red[800]!],
-                              [Colors.blue[800]!]
+                              [Globals.themeColor],
+                              [Globals.themeColor],
+                              [Globals.themeColor]
                             ],
                             activeFgColor: Colors.white,
                             inactiveBgColor: Colors.grey,

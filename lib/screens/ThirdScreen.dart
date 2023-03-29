@@ -28,6 +28,7 @@ class ThirdScreenState extends State<ThirdScreen> {
             appBar: AppBar(
               //App Bar wegnehmen?
               title: Text("Scan Barcode"),
+              backgroundColor: Globals.themeColor,
               centerTitle: true,
             ),
             body: Center(
