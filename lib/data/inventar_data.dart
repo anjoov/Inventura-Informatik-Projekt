@@ -7,6 +7,8 @@ class InventarData extends ChangeNotifier {
 
   List<InventarItem> itemListe = [];
 
+  List<InventarItem> get myList => itemListe;
+
 //Liste callen
   List<InventarItem> getEveryItem() {
     return itemListe;
