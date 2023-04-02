@@ -27,16 +27,33 @@ class SecondScreenState extends State {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Consumer<InventarData>(
-      builder: (context, value, child) => Scaffold(
-          body: SfCircularChart(series: <CircularSeries>[
-        PieSeries<ChartInventarData, String>(
-          dataSource: _chartData,
-          xValueMapper: (ChartInventarData data, _) => data.name,
-          yValueMapper: (ChartInventarData data, _) => data.money,
-        )
-      ])),
+      builder: (context, value, child) => SafeArea(
+        child: Scaffold(
+          backgroundColor: Globals.backgroundColor,
+            body: SfCircularChart(
+              title: ChartTitle(
+                text:"Ausgaben nach Kategorie in Euro",
+                textStyle: TextStyle(color: Globals.textColor)),
+              legend: Legend(
+              isVisible: true, 
+              overflowMode: LegendItemOverflowMode.wrap,
+              title:LegendTitle(
+                textStyle: TextStyle(color: Globals.textColor),
+              )
+              ),
+      
+        series: <CircularSeries>[
+          PieSeries<ChartInventarData, String>(
+            dataSource: _chartData,
+            xValueMapper: (ChartInventarData data, _) => data.name,
+            yValueMapper: (ChartInventarData data, _) => data.money,
+            dataLabelSettings: DataLabelSettings(isVisible:true )
+          )
+        ])),
+      ),
     );
   }
 
@@ -44,9 +61,9 @@ class SecondScreenState extends State {
     final List<ChartInventarData> chartData = [
       ChartInventarData(20, "Entertainment"),
       ChartInventarData(20, "Groceries"),
-      ChartInventarData(20, "Other "),
-      ChartInventarData(20, "Entertainment"),
-      ChartInventarData(20, "Entertainment"),
+      ChartInventarData(300, "Other "),
+      ChartInventarData(900, "Rent"),
+      ChartInventarData(234, "Insurance"),
     ];
     return chartData;
   }
@@ -57,3 +74,5 @@ class ChartInventarData {
   final String name;
   final double money;
 }
+
+

@@ -26,8 +26,11 @@ class ThirdScreenState extends State<ThirdScreen> {
         builder: (context, value, child) => Scaffold(
             backgroundColor: Globals.backgroundColor,
             appBar: AppBar(
+              shadowColor: Colors.blue,
               //App Bar wegnehmen?
-              title: Text("Scan Barcode"),
+              title: Text("Scan Barcode",
+              style: TextStyle(color:Globals.textColor),
+              ),
               backgroundColor: Globals.themeColor,
               centerTitle: true,
             ),
@@ -37,11 +40,11 @@ class ThirdScreenState extends State<ThirdScreen> {
                     children: <Widget>[
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                      primary: Globals.themeColor,
-                      onPrimary: Globals.textColor,
+                      backgroundColor: Colors.blue
                     ),
                     icon: Icon(Icons.camera_alt_outlined),
-                    label: Text("start scan"),
+                    label: Text("start scan",
+                    style: TextStyle(color: Globals.textColor)),
                     onPressed: scanBarcode,
                   ),
                   SizedBox(height: 20),

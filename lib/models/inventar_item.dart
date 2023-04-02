@@ -13,3 +13,5 @@ class InventarItem {
     required this.category,
   });
 }
+
+

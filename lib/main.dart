@@ -44,7 +44,7 @@ class MyAppState extends State<MyApp> {
         resizeToAvoidBottomInset: false,
         body: Column(
           children: [
-            Container(
+            SizedBox(
               height: 0.915 * MediaQuery.of(context).size.height,
               child: screenArr[screenIndx],
             ),

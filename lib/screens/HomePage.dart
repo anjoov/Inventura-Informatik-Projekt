@@ -159,6 +159,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Consumer<InventarData>(
         builder: (context, value, child) => Scaffold(
+          backgroundColor: Globals.backgroundColor,
             resizeToAvoidBottomInset: false,
             body: Column(
               children: [
@@ -166,7 +167,8 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   color: Globals.backgroundColor,
                   height: 0.915 * 0.915 * MediaQuery.of(context).size.height,
-                  child: ListView.builder(
+                  child: 
+                  ListView.builder(
                     shrinkWrap: true,
                     itemCount: value.getEveryItem().length,
                     itemBuilder: (context, index) => ItemTile(
@@ -184,11 +186,10 @@ class _HomePageState extends State<HomePage> {
                     height: 0.085 * 0.915 * MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
                     child: FloatingActionButton(
-                        backgroundColor: Globals.themeColor,
+                        elevation: 0,
                         onPressed: addNewItem,
                         child: Icon(
                           Icons.add,
-                          color: Globals.textColor,
                         ))),
               ],
             )));

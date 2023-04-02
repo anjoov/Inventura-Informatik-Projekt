@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_interpolation_to_compose_strings, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -9,10 +9,9 @@ class ItemTile extends StatelessWidget {
   final String price;
   final String category;
   final DateTime dateTime;
-  final void Function(BuildContext)? deleteTapped;
+  final void Function(BuildContext) deleteTapped;
 
   const ItemTile({
-    super.key,
     required this.name,
     required this.price,
     required this.category,
@@ -26,7 +25,7 @@ class ItemTile extends StatelessWidget {
     if (month.length == 1) {
       month = "0$month";
     }
-    String day = dateTime.month.toString();
+    String day = dateTime.day.toString();
     if (day.length == 1) {
       day = "0$day";
     }
@@ -56,3 +55,4 @@ class ItemTile extends StatelessWidget {
     );
   }
 }
+

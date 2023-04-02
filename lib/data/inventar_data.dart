@@ -3,8 +3,6 @@ import 'package:helloworld/data/hive_database.dart';
 import 'package:helloworld/models/inventar_item.dart';
 
 class InventarData extends ChangeNotifier {
-//Liste aller items
-
   List<InventarItem> itemListe = [];
 
   List<InventarItem> get myList => itemListe;
@@ -21,14 +19,12 @@ class InventarData extends ChangeNotifier {
     }
   }
 
-//neues item adden
   void addNewItemToList(InventarItem newItem) {
     itemListe.add(newItem);
     notifyListeners();
     db.saveData(itemListe);
   }
 
-//item deleten
   void deleteItemFromList(InventarItem item) {
     itemListe.remove(item);
     notifyListeners();
