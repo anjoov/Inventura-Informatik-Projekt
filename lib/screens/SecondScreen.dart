@@ -15,12 +15,11 @@ List<InventarItem> priceList = InventarData().getEveryItem();
 class SecondScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => SecondScreenState();
-  
 }
 
 class SecondScreenState extends State {
   late List<ChartInventarData> _chartData;
-  
+
   @override
   void initState() {
     _chartData = getChartData();
@@ -32,27 +31,24 @@ class SecondScreenState extends State {
     return Consumer<InventarData>(
       builder: (context, value, child) => SafeArea(
         child: Scaffold(
-          backgroundColor: Globals.backgroundColor,
+            backgroundColor: Globals.backgroundColor,
             body: SfCircularChart(
-              title: ChartTitle(
-                text:"Ausgaben nach Kategorie in Euro",
-                textStyle: TextStyle(color: Globals.textColor)),
-              legend: Legend(
-              isVisible: true, 
-              overflowMode: LegendItemOverflowMode.wrap,
-              title:LegendTitle(
-                textStyle: TextStyle(color: Globals.textColor),
-              )
-              ),
-      
-        series: <CircularSeries>[
-          PieSeries<ChartInventarData, String>(
-            dataSource: _chartData,
-            xValueMapper: (ChartInventarData data, _) => data.name,
-            yValueMapper: (ChartInventarData data, _) => data.money,
-            dataLabelSettings: DataLabelSettings(isVisible:true )
-          )
-        ])),
+                title: ChartTitle(
+                    text: "Ausgaben nach Kategorie in Euro",
+                    textStyle: TextStyle(color: Globals.textColor)),
+                legend: Legend(
+                    isVisible: true,
+                    overflowMode: LegendItemOverflowMode.wrap,
+                    title: LegendTitle(
+                      textStyle: TextStyle(color: Globals.textColor),
+                    )),
+                series: <CircularSeries>[
+                  PieSeries<ChartInventarData, String>(
+                      dataSource: _chartData,
+                      xValueMapper: (ChartInventarData data, _) => data.name,
+                      yValueMapper: (ChartInventarData data, _) => data.money,
+                      dataLabelSettings: DataLabelSettings(isVisible: true))
+                ])),
       ),
     );
   }
@@ -74,5 +70,3 @@ class ChartInventarData {
   final String name;
   final double money;
 }
-
-
