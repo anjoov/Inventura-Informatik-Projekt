@@ -81,7 +81,7 @@ class SettingsState extends State<Settings> {
                               [Globals.themeColor]
                             ],
                             activeFgColor: Colors.white,
-                            inactiveBgColor: Globals.themeColor = Colors.black,
+                            inactiveBgColor: Colors.grey,
                             inactiveFgColor: Colors.white,
                             initialLabelIndex: Globals.initialIndexTheme,
                             totalSwitches: 3,
@@ -99,7 +99,7 @@ class SettingsState extends State<Settings> {
                                   Globals.themeColor = Colors.red;
                                   Globals.initialIndexTheme = index;
                                 }
-                                main();
+                                Settings();
                               });
                             },
                           ),
